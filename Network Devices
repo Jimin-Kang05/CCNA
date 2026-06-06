@@ -1,0 +1,62 @@
+# [Network Basics] Essential Network Devices and Concepts
+
+This document provides a clear summary of Servers, Clients, Routers, Switches, and Firewalls to help with CCNA preparation and foundational networking knowledge.
+
+---
+
+## 1. Server vs. Client
+
+This classification is based on the **role** of the device when exchanging data over a network.
+
+### 💻 Client
+* **Definition:** A user device that **requests** services or resources.
+* **Role:** Devices like PCs, smartphones, and tablets that request web pages via browsers or fetch data through applications.
+* **Characteristics:** Initiates communication and typically operates using dynamic IP addresses.
+
+### 🖥️ Server
+* **Definition:** A computer system that **provides/responds** to requests made by clients.
+* **Role:** Delivers data and services 24/7 (e.g., Web servers, Database servers, File servers).
+* **Characteristics:** Requires high performance and availability, usually operating with a Static IP to listen for client connections continuously.
+
+---
+
+## 2. Router vs. Switch
+
+These are **data-forwarding devices** that move packets to their destinations, operating at different layers of the OSI model.
+
+### 🔄 Switch
+* **OSI Layer:** **Layer 2 (Data Link Layer)**
+* **Key Address:** **MAC Address (Physical Address)**
+* **Role:** Connects devices and forwards data **within the same network (LAN)**.
+* **Mechanism:** Learns the MAC addresses of connected devices to build a `MAC Address Table`. It selectively forwards data to the specific destination port (Unicast) rather than broadcasting it to all ports.
+
+### 🌐 Router
+* **OSI Layer:** **Layer 3 (Network Layer)**
+* **Key Address:** **IP Address (Logical Address)**
+* **Role:** Connects and forwards data **between different networks (WAN/LAN)**.
+* **Mechanism:** Uses a `Routing Table` to determine the best path (Routing) for data packets to reach their destination IP address and forwards them accordingly. It also functions as a boundary to stop broadcasts.
+
+---
+
+## 3. Firewall
+
+The primary device responsible for network **security**.
+
+### 🛡️ Firewall
+* **Role:** Monitors and controls incoming and outgoing network traffic between a trusted internal network and an untrusted external network (e.g., the Internet).
+* **Mechanism:** Inspects traffic based on a predefined set of security rules (e.g., Access Control Lists - ACLs) to either Allow or Deny packet passage.
+* **Types:**
+    * **Packet Filtering:** Filters traffic based on IP addresses and Port numbers.
+    * **Next-Generation Firewall (NGFW):** Performs deep packet inspection up to the Application Layer (Layer 7) to detect malware and control specific application behaviors.
+
+---
+
+## 📊 Quick Summary Table
+
+| Device / Concept | Primary OSI Layer | Key Identifier | Main Function |
+| :--- | :---: | :---: | :--- |
+| **Client** | Layer 7 (App) | IP / Port | Requests services |
+| **Server** | Layer 7 (App) | IP / Port | Provides/Responds to services |
+| **Switch** | Layer 2 (Data Link) | MAC Address | Forwards data within the same LAN |
+| **Router** | Layer 3 (Network) | IP Address | Routes packets between different networks |
+| **Firewall** | Layer 3 to 7 | IP, Port, Content | Permits or blocks traffic based on security rules |
