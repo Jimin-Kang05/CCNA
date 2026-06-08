@@ -1,0 +1,52 @@
+# Ethernet Standards & Specifications (IEEE 802.3)
+
+A comprehensive guide to standard Ethernet specifications, speeds, and media types for CCNA preparation.
+
+---
+
+## 1. Overview of IEEE 802.3
+Ethernet is the most widely used local area network (LAN) technology. It operates at both the **Physical Layer (Layer 1)** and **Data Link Layer (Layer 2)** of the OSI model. The IEEE 802.3 standard defines the physical layer and the MAC (Media Access Control) sublayer of the data link layer for wired Ethernet.
+
+---
+
+## 2. Ethernet Naming Convention
+Ethernet standards follow a specific naming syntax: **[Speed][Signaling Method][Media Type]**
+
+* **Speed:** The data rate (e.g., `10` = 10 Mbps, `100` = 100 Mbps, `1000` = 1 Gbps).
+* **Signaling Method:** Almost always `BASE` (Baseband), meaning the medium carries only one data signal at a time.
+* **Media Type/Distance:** Indicates the cable type or maximum segment length (e.g., `T` = Twisted Pair, `SX`/`LX`/`ZX` = Fiber Optic).
+
+---
+
+## 3. Key Ethernet Standards Summary
+
+| Standard Name | Common Name | IEEE Standard | Max Speed | Cable Type | Max Distance |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **10BASE-T** | Standard Ethernet | 802.3 | 10 Mbps | Cat3/Cat5 UTP | 100 meters |
+| **100BASE-TX** | Fast Ethernet | 802.3u | 100 Mbps | Cat5 or better UTP | 100 meters |
+| **1000BASE-T** | Gigabit Ethernet | 802.3ab | 1 Gbps (1000 Mbps)| Cat5e/Cat6 UTP | 100 meters |
+| **10GBASE-T** | 10 Gigabit Ethernet| 802.3an | 10 Gbps | Cat6a/Cat7 UTP | 100 meters |
+| **1000BASE-SX** | Gigabit Fiber (Short) | 802.3z | 1 Gbps | Multi-Mode Fiber (MMF) | ~550 meters |
+| **1000BASE-LX** | Gigabit Fiber (Long) | 802.3z | 1 Gbps | Single-Mode Fiber (SMF) | ~5 kilometers |
+
+---
+
+## 4. Media Types & Characteristics
+
+### Copper (Twisted-Pair) Cables
+* **UTP (Unshielded Twisted Pair):** Most common in LANs. Vulnerable to EMI (Electromagnetic Interference).
+* **Pinouts (MDI vs. MDI-X):**
+    * **Straight-Through Cable:** Connects differing devices (e.g., Switch to Router, Switch to PC).
+    * **Crossover Cable:** Connects similar devices (e.g., Switch to Switch, Router to Router, PC to PC).
+    * *Note: Modern devices use **Auto-MDIX** to automatically detect and adjust the required cable type.*
+
+### Fiber Optic Cables
+* **Multi-Mode Fiber (MMF):** Uses LEDs as a light source. Larger core diameter. Used for shorter distances (within buildings/campuses) due to modal dispersion.
+* **Single-Mode Fiber (SMF):** Uses Lasers as a light source. Very small core diameter. Used for long-distance data transmission (up to tens of kilometers) with minimal signal loss.
+
+---
+
+## 5. Key CCNA Exam Takeaways
+1. **Distance Limitations:** All standard Copper UTP runs (`10BASE-T` through `10GBASE-T`) are strictly limited to **100 meters**.
+2. **Bandwidth Upgrades:** Moving from Fast Ethernet to Gigabit Ethernet requires upgrading from Cat5 to at least **Cat5e** cabling to handle the frequency and minimize crosstalk.
+3. **Layer 2 Framing:** Regardless of the physical layer speed (10 Mbps or 10 Gbps), the basic structure of the Ethernet II Frame (Destination MAC, Source MAC, Type, Payload, FCS) remains the same.
