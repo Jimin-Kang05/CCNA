@@ -1,1 +1,80 @@
+# CCNA Study Note: Network Media and Cabling
+
+This document provides a highly structured overview of physical network media types, standards, and pinning structures required for the Cisco Certified Network Associate (CCNA) curriculum.
+
+---
+
+## 1. Copper Cabling: Twisted-Pair Cables
+
+Twisted-pair cabling comprises insulated copper wire pairs twisted around each other. The twist geometry uses cancellation to diminish **Electromagnetic Interference (EMI)** and **Crosstalk** (signal bleeding between neighboring wire pairs).
+
+### Physical Variants
+* **UTP (Unshielded Twisted Pair):** The predominant media architecture in commercial LANs. Lacks interior shielding, instead relying exclusively on pair twists to reject noise. Flexible, thin, and economical.
+* **STP (Shielded Twisted Pair):** Contains an internal metallic foil or braided wrap enveloping the pairs. Delivers excellent isolation against heavy industrial EMI but introduces higher material costs and structural stiffness.
+
+### UTP Standard Categories
+| Category | Maximum Data Rate | Transmission Bandwidth | Maximum Segment Distance | Key Application Cases |
+| :--- | :--- | :--- | :--- | :--- |
+| **Cat 5e** | 1 Gbps | 100 MHz | 100 meters | Standard Legacy LAN Environments |
+| **Cat 6** | 10 Gbps | 250 MHz | 55 meters (10G) / 100m (1G) | High-Performance Modern LANs |
+| **Cat 6A** | 10 Gbps | 500 MHz | 100 meters | Server Farms / High-Density Infrastructure |
+
+---
+
+## 2. Fiber-Optic Cabling
+
+Fiber-optic mediums route data as light modulations through a core comprised of silica glass or engineered polymers. Being non-electrical, fiber exhibits **total immunity to EMI and RFI**, offering exceptional security and range.
+
+### Single-Mode Fiber (SMF)
+* **Core Diameter:** ~9 microns (very narrow core).
+* **Optical Source:** Coherent Laser beam.
+* **Light Paths:** Single, straight line path.
+* **Distance Coverage:** Extends up to tens of kilometers without repeaters.
+* **Primary Deployments:** Provider backbones, WAN transport links, and inter-facility campus networks.
+
+### Multi-Mode Fiber (MMF)
+* **Core Diameter:** 50 to 62.5 microns (wider internal core).
+* **Optical Source:** Light-Emitting Diodes (LED) or VCSELs.
+* **Light Paths:** Multiple internal reflective angles. This causes *modal dispersion* over extended runs, which weakens data integrity over long distances.
+* **Distance Coverage:** Typically constrained to distances ≤ 550 meters.
+* **Primary Deployments:** Internal building risers, local server enclosures, and storage area networks (SANs).
+
+---
+
+## 3. Wire Pinout Architectures & Cabling Logic
+
+Copper Ethernet configurations terminate into **RJ-45 modular connectors** using specific sequence maps defined by the TIA/EIA-568 standard.
+
+### Wire Color Sequences
+* **T568A Specification:** 1. White/Green, 2. Green, 3. White/Orange, 4. Blue, 5. White/Blue, 6. Orange, 7. White/Brown, 8. Brown.
+* **T568B Specification:** 1. White/Orange, 2. Orange, 3. White/Green, 4. Blue, 5. White/Blue, 6. Green, 7. White/Brown, 8. Brown. *(Most widely adopted sequence in modern enterprise environments).*
+
+### Cable Structural Topologies
+
+#### A. Straight-Through Cable
+* **Wiring Map:** Identical standard applied on both sides (T568B to T568B, or T568A to T568A).
+* **Application:** Cross-connects **unlike devices** (nodes mapping to distinct OSI operational layers).
+  * *Connections:* Switch to Router, Switch to Host PC, Hub to Server.
+
+#### B. Crossover Cable
+* **Wiring Map:** T568A configuration on one end, paired with T568B on the opposite side (Transmit pins 1/2 are mapped directly to Receive pins 3/6).
+* **Application:** Cross-connects **like devices** (nodes operating on matching OSI layers).
+  * *Connections:* Switch to Switch, Router to Router, **PC to PC**, **Router to PC**.
+
+#### C. Rollover (Console) Cable
+* **Wiring Map:** A proprietary topology where pin mappings are mirror-reversed on the far end (Pin 1 routes to Pin 8, Pin 2 to Pin 7, etc.).
+* **Application:** Connects a management workstation's serial COM port to an infrastructure appliance Console port for out-of-band CLI configurations.
+
+> 💡 **CCNA Operational Note (Auto-MDIX):** Modern interface hardware utilizes **Auto-MDIX** (Automatic Medium-Dependent Interface Crossover) to automatically sense and cross-connect TX/RX lines natively, removing physical cable mismatches. However, manual cable selection rules remain an essential concept for CCNA theoretical evaluation.
+
+---
+
+## 4. Notable IEEE 802.3 Ethernet Standards
+
+The physical network layer formats use standard designations indicating transmission speed, signaling method, and physical medium type:
+
+* **1000BASE-T:** Gigabit speed over Twisted-Pair Copper (Cat 5e/6 implementations) spanning a 100m limits.
+* **10GBASE-T:** 10 Gigabit data over Twisted-Pair Copper (Cat 6 up to 55m, Cat 6A extending to 100m).
+* **10GBASE-SR:** 10 Gigabit Short-Range over Multi-Mode Fiber (typically matching 300m bounds).
+* **10GBASE-LR:** 10 Gigabit Long-Range over Single-Mode Fiber (engineered to cover up to 10km lengths).
 
