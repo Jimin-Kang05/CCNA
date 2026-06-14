@@ -1,0 +1,50 @@
+# CCNA Study Reference: The OSI 7-Layer Model
+
+This document serves as a structured reference guide for the **Open Systems Interconnection (OSI) Reference Model**, specifically tailored for CCNA preparation and network troubleshooting fundamentals. Understanding the precise functions, Protocol Data Units (PDUs), and associated devices of each layer is essential for mastering Cisco architectures.
+
+---
+
+## 1. The OSI Model Architecture at a Glance
+
+Data moving down the stack (Layers 7 to 1) undergoes **Encapsulation** (adding headers/trailers), while data moving up the stack (Layers 1 to 7) undergoes **Decapsulation** (stripping headers).
+
+| Layer | Layer Name | PDU (Data Unit) | Primary Responsibility | Key Protocols & Hardware |
+| :---: | :--- | :---: | :--- | :--- |
+| **7** | **Application** | Data | Network services directly to end-user applications. | HTTP, HTTPS, FTP, DNS, DHCP |
+| **6** | **Presentation**| Data | Data formatting, encryption, and compression. | SSL/TLS, JPEG, ASCII, MPEG |
+| **5** | **Session** | Data | Establishes, manages, and terminates sessions. | NetBIOS, RPC, Sockets |
+| **4** | **Transport** | **Segment** | End-to-end reliable delivery, flow control, port addressing. | **TCP, UDP** / L4 Switches |
+| **3** | **Network** | **Packet** | Logical addressing (IP) and path determination (Routing). | **IPv4, IPv6**, ICMP, OSPF / **Router**, L3 Switch |
+| **2** | **Data Link** | **Frame** | Physical addressing (MAC) and hop-to-hop data transfer. | **Ethernet**, ARP, VLAN / **Switch**, Bridge |
+| **1** | **Physical** | **Bit** | Transmission of raw unstructured bitstreams over media. | Cables (UTP, Fiber), RJ-45 / Hub, Repeater |
+
+---
+
+## 2. Deep Dive: Layer-by-Layer Functionality (CCNA Core)
+
+### 🔹 Layer 4: Transport Layer
+The Transport Layer is responsible for establishing a logical end-to-end connection between the source and destination applications. 
+* **Port Numbers:** Used to track distinct conversations (e.g., HTTP = 80, HTTPS = 443, SSH = 22).
+* **TCP (Transmission Control Protocol):** Connection-oriented, guarantees delivery through a `3-Way Handshake` (SYN $\rightarrow$ SYN-ACK $\rightarrow$ ACK), sequencing, and error recovery.
+* **UDP (User Datagram Protocol):** Connectionless, unreliable, low overhead; optimal for real-time traffic like VoIP and video streaming.
+
+### 🔹 Layer 3: Network Layer
+The Network Layer manages the routing of data packets across multiple independent networks.
+* **Logical Addressing:** Hierarchical IP addresses (IPv4 and IPv6) uniquely identify networks and specific host nodes.
+* **Routing:** Routers maintain routing tables to evaluate paths and forward packets based on the destination IP address.
+
+### 🔹 Layer 2: Data Link Layer
+Divided into two sublayers: **LLC (Logical Link Control)** and **MAC (Media Access Control)**. It manages local communication within a single broadcast domain.
+* **Physical Addressing:** Flat 48-bit burned-in MAC addresses are utilized to transport frames inside a Local Area Network (LAN).
+* **Switching:** Layer 2 switches inspect the source MAC addresses of incoming frames to populate their MAC address tables, forwarding traffic dynamically based on destination MACs.
+
+### 🔹 Layer 1: Physical Layer
+Deals with the physical media, connectors, and electrical/optical signaling required to move raw bits across the network.
+
+---
+
+## 3. CCNA Exam Guide & Mnemonics
+
+* **Top-to-Bottom Mnemonic (7 to 1):** * **A**ll **P**eople **S**eem **T**o **N**eed **D**ata **P**rocessing
+* **Bottom-to-Top Mnemonic (1 to 7):** * **P**lease **D**o **N**ot **T**hrow **S**ausage **P**izza **A**way
+* **Troubleshooting Paradigm:** * Always troubleshoot systematically. Start at Layer 1 (Verify physical cabling and link lights), move to Layer 2 (Check MAC learning and VLAN alignment), and then proceed to Layer 3 (Verify IP configuration and test ping to the default gateway).
