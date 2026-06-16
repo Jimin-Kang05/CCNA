@@ -1,0 +1,69 @@
+# Network Fundamentals: Understanding the TCP/IP Protocol Suite
+
+This document provides a comprehensive overview of the **TCP/IP Protocol Suite**, tailored for network engineering students and professionals preparing for Cisco certifications (such as CCNA).
+
+---
+
+## 1. Overview: What is TCP/IP?
+The **TCP/IP model** (Transmission Control Protocol/Internet Protocol) is the conceptual and practical framework that powers the modern Internet. It defines how data is formatted, addressed, transmitted, routed, and received across a network.
+
+While the theoretical **OSI 7-Layer Model** is excellent for conceptual reference, the **TCP/IP Updated Model (5-Layer)** closely aligns with actual internet architectures and modern networking standards.
+
+---
+
+## 2. The 5-Layer TCP/IP Model & Encapsulation
+Data moves down the stack during transmission (**Encapsulation**) and up the stack upon reception (**De-encapsulation**). Each layer adds its own control information (headers) and handles a specific Protocol Data Unit (PDU).
+
+| Layer Number | Layer Name | PDU (Data Unit) | Addressing Used | Core Protocols / Standards |
+| :---: | :--- | :--- | :--- | :--- |
+| **5** | **Application** | Data | - | HTTP, HTTPS, SSH, FTP, DNS, DHCP |
+| **4** | **Transport** | **Segment** | **Port Numbers** | TCP, UDP |
+| **3** | **Network / Internet** | **Packet** | **IP Addresses** (IPv4/v6) | IP, ICMP, ARP, OSPF |
+| **2** | **Data Link** | **Frame** | **MAC Addresses** | Ethernet (802.3), Wi-Fi (802.11), VLANs |
+| **1** | **Physical** | Bits | - | Cables (Cat6, Fiber), Hubs, Electrical Signals |
+
+---
+
+## 3. Layer 4: Deep Dive into Transport Protocols (TCP vs. UDP)
+The Transport Layer ensures end-to-end communication between processes running on different hosts. Choosing between TCP and UDP depends entirely on whether the application requires **reliability** or **speed**.
+
+### A. TCP (Transmission Control Protocol)
+* **Characteristics:** Connection-oriented, Reliable, Slower overhead.
+* **Mechanism:** Establishes a virtual connection before sending data using the **3-Way Handshake**:
+  1. `SYN` (Synchronize Sequence Number) - Initiated by Client.
+  2. `SYN-ACK` - Acknowledged and initiated back by Server.
+  3. `ACK` - Acknowledged by Client; connection established.
+* **Key Features:**
+  * **Flow Control:** Uses *Sliding Windows* to prevent the sender from overwhelming the receiver.
+  * **Error Recovery:** Uses sequence numbers to detect lost packets and requests retransmission.
+* **Common Applications:** Web Browsing (HTTP/S), Secure Shell (SSH), File Transfer (FTP).
+
+### B. UDP (User Datagram Protocol)
+* **Characteristics:** Connectionless, Unreliable (Best-effort delivery), Low overhead, Fast.
+* **Mechanism:** Sends data immediately without establishing a prior connection or verifying if the destination is ready.
+* **Key Features:** No flow control, no error recovery, and no reordering of received packets.
+* **Common Applications:** VoIP (Voice over IP), Video Streaming, DNS queries, DHCP.
+
+---
+
+## 4. Layer 3: The Network (Internet) Layer & Routing
+The primary purpose of the Network Layer is **logical addressing** and **path determination (Routing)** to move packets across different networks.
+
+* **IP (Internet Protocol):** Assigns unique logical addresses (IPv4 or IPv6) to network interfaces. It is a connectionless, best-effort protocol.
+* **Routing:** Routers inspect the destination IP address of an incoming packet and match it against their **Routing Table** to find the next-best path (Next-hop).
+* **ICMP (Internet Control Message Protocol):** Used by network devices to send error messages and operational information. Tools like `ping` and `traceroute` rely heavily on ICMP.
+
+---
+
+## 5. Summary of Essential Well-Known Ports
+Port numbers are used at the Transport Layer to differentiate between distinct applications. Memorizing these is crucial for configuring firewalls, Access Control Lists (ACLs), and passing certification exams:
+
+* **SSH (Secure Shell):** Port 22 (TCP)
+* **Telnet:** Port 23 (TCP)
+* **DNS (Domain Name System):** Port 53 (UDP/TCP)
+* **DHCP (Dynamic Host Configuration Protocol):** Ports 67/68 (UDP)
+* **HTTP:** Port 80 (TCP)
+* **HTTPS (Secure HTTP):** Port 443 (TCP)
+
+---
+*Document maintained as part of CCNA study notes.*
