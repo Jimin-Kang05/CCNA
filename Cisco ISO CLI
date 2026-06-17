@@ -1,0 +1,80 @@
+# Cisco IOS CLI: The Three Core Operational Modes
+
+When managing Cisco network devices (routers and switches), the **Command Line Interface (CLI)** is structured hierarchically[cite: 1]. Accessing different structural commands requires switching between specialized environments called **Modes**[cite: 1]. 
+
+Understanding the **Three Core Modes**—including their prompts, purposes, and access methods—is fundamental for Cisco network administration and CCNA preparation[cite: 1].
+
+---
+
+## 1. User EXEC Mode
+
+### Overview
+**User EXEC Mode** is the initial landing environment when establishing a session with a Cisco device via console, Telnet, or SSH[cite: 1]. It is designed for basic monitoring and non-disruptive troubleshooting[cite: 1].
+
+* **Default Prompt:** `Device>` (e.g., `Router>`, `Switch>`)[cite: 1]
+* **Privilege Level:** Level 1 (Lowest)[cite: 1]
+* **Scope of Control:** Read-only access to a limited selection of basic operational parameters[cite: 1]. It cannot modify device configurations, view sensitive details (like running configurations), or view secure status metrics[cite: 1].
+
+### Common Use Cases
+* Initiating baseline network diagnostics: `ping`, `traceroute`[cite: 1].
+* Checking fundamental system status: `show version`, `show clock`[cite: 1].
+* Managing terminal session settings[cite: 1].
+
+---
+
+## 2. Privileged EXEC Mode (Enable Mode)
+
+### Overview
+Often referred to as **Enable Mode**, the **Privileged EXEC Mode** grants comprehensive monitoring, operating, and maintenance permissions[cite: 1]. This mode is the gatekeeper to advanced debugging tools and administrative configurations[cite: 1].
+
+* **Default Prompt:** `Device#` (e.g., `Router#`, `Switch#`)[cite: 1]
+* **Privilege Level:** Level 15 (Highest by default)[cite: 1]
+* **How to Access:** Execute the `enable` command from User EXEC Mode[cite: 1].
+```text
+  Router> enable
+  Router#
+  ```[cite: 1]
+* **How to Exit:** Execute `disable` or `exit` to return to User EXEC Mode[cite: 1].
+
+### Common Use Cases
+* Viewing detailed system status and running files via full-scope `show` commands:[cite: 1]
+  * `show running-config` (Examines the active configuration in RAM)[cite: 1]
+  * `show startup-config` (Examines the saved configuration in NVRAM)[cite: 1]
+  * `show ip interface brief` (Summarizes interface status and IP addresses)[cite: 1]
+* Executing diagnostic utilities: `debug` commands[cite: 1].
+* Managing device files: `copy running-config startup-config`, `reload`, `erase`[cite: 1].
+
+---
+
+## 3. Global Configuration Mode
+
+### Overview
+**Global Configuration Mode** is the primary environment used to modify the device's actual behavior, system characteristics, and operating policies[cite: 1]. Changes made here apply **globally** to the entire device rather than individual physical components[cite: 1].
+
+* **Default Prompt:** `Device(config)#` (e.g., `Router(config)#`, `Switch(config)#`)[cite: 1]
+* **How to Access:** Execute the `configure terminal` (or abbreviated `conf t`) command from Privileged EXEC Mode[cite: 1].
+```text
+  Router# configure terminal
+  Router(config)#
+  ```[cite: 1]
+* **How to Exit:**[cite: 1]
+  * Execute `exit` to move one step back to Privileged EXEC Mode[cite: 1].
+  * Execute `end` or use the keyboard shortcut `Ctrl + Z` to immediately jump back to Privileged EXEC Mode from any deep sub-configuration level[cite: 1].
+
+### Common Use Cases
+* Changing global system settings: `hostname`, `banner motd`[cite: 1].
+* Configuring security parameters: `enable secret`, `line vty 0 4`[cite: 1].
+* Navigating down to **Sub-Configuration Modes** for specific sub-components:[cite: 1]
+  * **Interface Mode:** `interface gigabitethernet 0/0` ➔ `Router(config-if)#`[cite: 1]
+  * **Line Mode:** `line console 0` ➔ `Router(config-line)#`[cite: 1]
+  * **Routing Protocol Mode:** `router ospf 1` ➔ `Router(config-router)#`[cite: 1]
+
+---
+
+## Quick Reference Summary Table
+
+| Mode Name | How to Access | Example Prompt | Key Functional Scope | Method to Exit/Return |
+| :--- | :--- | :--- | :--- | :--- |
+| **User EXEC** | Default upon login[cite: 1] | `Router>`[cite: 1] | Basic diagnostics, read-only monitoring[cite: 1] | `exit` (closes terminal session)[cite: 1] |
+| **Privileged EXEC** | `enable` (from User)[cite: 1] | `Router#`[cite: 1] | Advanced verification, debugging, saving configurations[cite: 1] | `disable` or `exit`[cite: 1] |
+| **Global Configuration** | `configure terminal` (from Privileged)[cite: 1] | `Router(config)#`[cite: 1] | Modifying device-wide configurations, entering sub-modes[cite: 1] | `exit` (goes to Privileged), `end` / `Ctrl+Z`[cite: 1] |
