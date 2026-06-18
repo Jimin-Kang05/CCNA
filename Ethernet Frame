@@ -1,0 +1,29 @@
+# Understanding Ethernet Frame Structure (CCNA Guide)
+
+An **Ethernet Frame** is the fundamental Data Link Layer (Layer 2) protocol data unit (PDU) used to transmit data over wired local area networks (LANs). In standard modern networks, the **Ethernet II** frame format is predominantly used.
+
+This documentation breaks down the anatomy of an Ethernet II frame, detailing the purpose and size of each field as required for CCNA certification preparation.
+
+---
+
+## 1. Ethernet II Frame Anatomy
+
+A standard Ethernet II frame consists of several specific fields. The total size of a standard frame ranges from **64 bytes to 1,518 bytes** (excluding the Preamble and SFD, which are used for physical layer synchronization).
+
+| Field | Preamble | SFD | Destination MAC | Source MAC | Type | Data (Payload) | FCS |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Size** | 7 Bytes | 1 Byte | 6 Bytes | 6 Bytes | 2 Bytes | 46 - 1500 Bytes | 4 Bytes |
+
+
+
+---
+
+## 2. Detailed Field Breakdowns
+
+### ❶ Preamble (7 Bytes)
+* **Purpose:** Synchronization.
+* **Mechanism:** It consists of a repetitive pattern of alternating 1s and 0s (`10101010` repeated 7 times). This alerts the receiving network interface card (NIC) that a frame is arriving, allowing it to synchronize its clock with the incoming signal.
+
+### ❷ Start Frame Delimiter (SFD) (1 Byte)
+* **Purpose:** Framing and Boundary Detection.
+* **Mechanism:** It contains the sequence `10101011`. The final two consecutive `1` bits signal to the receiver that the synchronization sequence is over and the actual frame content (starting with the Destination MAC) begins
